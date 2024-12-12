@@ -1,0 +1,25 @@
+{
+  "name": "wangUtils",
+  "version": "0.0.1",
+  "description": "waker常用工具库集成",
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vue.git"
+  },
+  "keywords": [
+    "wangUtils"
+  ],
+  "author": "waker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ryan0562/wangUtils/issues"
+  },
+  "homepage": "https://github.com/ryan0562/wangUtils",
+  "dependencies": {
+
+  },
+  "devDependencies": {
+
+  }
+}
