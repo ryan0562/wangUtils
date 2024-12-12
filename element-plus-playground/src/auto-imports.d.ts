@@ -11,6 +11,7 @@ declare global {
   const IMPORT_MAP: typeof import('./composables/store')['IMPORT_MAP']
   const LEGACY_IMPORT_MAP: typeof import('./composables/store')['LEGACY_IMPORT_MAP']
   const TSCONFIG: typeof import('./composables/store')['TSCONFIG']
+  const WANGSTORAGE_FILE: typeof import('./composables/store')['WANGSTORAGE_FILE']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
   const computed: typeof import('vue')['computed']

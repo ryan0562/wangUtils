@@ -17,6 +17,7 @@ import { atou, utoa } from '@/utils/encode'
 import elementPlusCode from '../template/element-plus.js?raw'
 import mainCode from '../template/main.vue?raw'
 import tsconfigCode from '../template/tsconfig.json?raw'
+
 import welcomeCode from '../template/welcome.vue?raw'
 
 export interface Initial {
@@ -34,11 +35,20 @@ export type SerializeState = Record<string, string> & {
 }
 
 const MAIN_FILE = 'src/PlaygroundMain.vue'
+
 const APP_FILE = 'src/App.vue'
 const ELEMENT_PLUS_FILE = 'src/element-plus.js'
 const LEGACY_IMPORT_MAP = 'src/import_map.json'
 export const IMPORT_MAP = 'import-map.json'
 export const TSCONFIG = 'tsconfig.json'
+/* 自定义常驻文件 */
+import wangStorageCode from '../template/wangStorage.vue?raw'
+const customSavedFiles = [
+  {
+    name: 'wangStorage.vue',
+    code: wangStorageCode,
+  }
+]
 
 export const useStore = (initial: Initial) => {
   const saved: SerializeState | undefined = initial.serializedState
@@ -186,6 +196,11 @@ export const useStore = (initial: Initial) => {
       }
     } else {
       files[APP_FILE] = new File(APP_FILE, welcomeCode)
+      // 自定义常驻文件
+      customSavedFiles.forEach(item => {
+        files[item.name] = new File(item.name, item.code)
+      })
+
     }
     if (!files[ELEMENT_PLUS_FILE]) {
       files[ELEMENT_PLUS_FILE] = new File(
