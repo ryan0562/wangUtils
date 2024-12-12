@@ -1,5 +1,5 @@
 // Storage库
-import WangStorage from "./WangStorage";
+import WangStorage from "./lib/WangStorage.js";
 
 
 

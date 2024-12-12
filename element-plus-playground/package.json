@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@iconify-json/ri": "^1.2.0",
+    "waker-utils": "file:..",
     "@sxzz/eslint-config": "^4.1.6",
     "@sxzz/prettier-config": "^2.0.2",
     "@types/node": "^22.5.4",

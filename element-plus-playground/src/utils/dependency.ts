@@ -65,6 +65,10 @@ export const genImportMap = (
       version: '2',
       path: '/dist/index.min.js',
     },
+    'waker-utils': {
+      version: 'latest',
+      path: '/index.js',
+    },
   }
 
   return {
