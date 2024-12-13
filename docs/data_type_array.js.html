@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: data/type/array.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: data/type/array.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * 将对象映射为数组
+ * @param {Object} map - 要映射的对象
+ * @param {string} nameKey - 数组项中名称的键，默认为 "label"
+ * @param {string} valueKey - 数组项中值的键，默认为 "value"
+ * @returns {Array} - 映射后的数组
+ */
+export function mapToArray(map, nameKey = "label", valueKey = "value") {
+  // 缺少一个map为非for循环值的判断
+  const reval = [];
+  for (const key in map) {
+    const label = map[key];
+    reval.push({
+      [nameKey]: label,
+      [valueKey]: key,
+    });
+  }
+  return reval;
+}
+
+/**
+ * 打乱数组顺序
+ * @param {Array} array - 要打乱的数组
+ * @returns {Array} - 打乱后的数组
+ */
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    // Generate a random index j such that 0 &lt;= j &lt;= i
+    const j = Math.floor(Math.random() * (i + 1));
+    // Swap elements at indexes i and j
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+/**
+ * 扁平化数组
+ * @param {Array} array - 要扁平化的数组
+ * @param {string} childrenKey - 子数组的键名，默认为 "children"
+ * @param {number} _level - 当前层级，默认为 0
+ * @returns {Array} - 扁平化后的数组
+ */
+function flatArray(array, childrenKey = "children", _level = 0) {
+  _level = _level + 1;
+  return array.reduce((total, item) => {
+    total.push({
+      ...item,
+      _level,
+    });
+    // 是否有子菜单，并递归处理
+    if (item[childrenKey]?.length > 0) {
+      total.push(...flatArray(item[childrenKey], childrenKey, _level));
+    }
+    return total;
+  }, []);
+}
+
+/**
+ * 根据选项扁平化树
+ * @param {Array} data - 数据数组
+ * @param {string} childrenKey - 子节点的键名，默认为 "children"
+ * @param {string[]} options - 需要导出的字段集合
+ * @returns {Array} - 扁平化后的选项数组
+ */
+function flatArrayToOption({ data, childrenKey = "children", options }) {
+  return data.reduce((total, item) => {
+    const it = {};
+    options.forEach((key) => {
+      it[key] = item[key];
+    });
+    total.push(it);
+    // 是否有子菜单，并递归处理
+    if (item[childrenKey]?.length > 0) {
+      total.push(...flatArrayToOption({ data: item[childrenKey], options }));
+    }
+    return total;
+  }, []);
+}
+
+/**
+ * 将树的某个键组成数组取出
+ * @param {Array} data - 数据数组
+ * @param {string} childrenKey - 子节点的键名，默认为 "children"
+ * @param {string} key - 需要取出的键名
+ * @param {Function} filterMethod - 过滤方法，返回假值会过滤掉
+ * @returns {Array} - 提取后的键值数组
+ */
+function flatArrayToKey({ data, childrenKey = "children", key, filterMethod }) {
+  return data.reduce((total, item) => {
+    // 是否有过滤条件
+    if (filterMethod) {
+      if (typeof (filterMethod) !== 'function') {
+        throw 'filterMethod必须是个函数';
+      }
+      const isOK = filterMethod(item);
+      if (isOK) {
+        total.push(item[key]);
+      }
+    } else {
+      total.push(item[key]);
+    }
+    // 是否有子菜单，并递归处理
+    if (item[childrenKey]?.length > 0) {
+      total.push(...flatArrayToKey({ data: item[childrenKey], key, filterMethod }));
+    }
+    return total;
+  }, []);
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-data.html">data</a></li><li><a href="module-data_storage.html">data/storage</a></li><li><a href="module-data_storage_WangStorage.html">data/storage/WangStorage</a></li><li><a href="module-data_storage_cookie.html">data/storage/cookie</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GetRequest">GetRequest</a></li><li><a href="global.html#amountFormat">amountFormat</a></li><li><a href="global.html#blobToDataURL">blobToDataURL</a></li><li><a href="global.html#broswer">broswer</a></li><li><a href="global.html#changeMoneyToChinese">changeMoneyToChinese</a></li><li><a href="global.html#convertLonLatToGCJ">convertLonLatToGCJ</a></li><li><a href="global.html#emptyDefault">emptyDefault</a></li><li><a href="global.html#exitFullscreen">exitFullscreen</a></li><li><a href="global.html#fistLetterUpper">fistLetterUpper</a></li><li><a href="global.html#fixNumber">fixNumber</a></li><li><a href="global.html#fixPercentage">fixPercentage</a></li><li><a href="global.html#flatArray">flatArray</a></li><li><a href="global.html#flatArrayToKey">flatArrayToKey</a></li><li><a href="global.html#flatArrayToOption">flatArrayToOption</a></li><li><a href="global.html#fomartBankCardCode">fomartBankCardCode</a></li><li><a href="global.html#funcUrlDel">funcUrlDel</a></li><li><a href="global.html#getA4PixelSize">getA4PixelSize</a></li><li><a href="global.html#getCamelCase">getCamelCase</a></li><li><a href="global.html#getClientHeight">getClientHeight</a></li><li><a href="global.html#getDPI">getDPI</a></li><li><a href="global.html#getExplorerInfo">getExplorerInfo</a></li><li><a href="global.html#getKebabCase">getKebabCase</a></li><li><a href="global.html#getPageViewWidth">getPageViewWidth</a></li><li><a href="global.html#getQueryString">getQueryString</a></li><li><a href="global.html#getType">getType</a></li><li><a href="global.html#handleScrollHeader">handleScrollHeader</a></li><li><a href="global.html#hideString">hideString</a></li><li><a href="global.html#intToChinese">intToChinese</a></li><li><a href="global.html#isAppleMobileDevice">isAppleMobileDevice</a></li><li><a href="global.html#isIE">isIE</a></li><li><a href="global.html#isMobile">isMobile</a></li><li><a href="global.html#mapToArray">mapToArray</a></li><li><a href="global.html#newWindowDownload">newWindowDownload</a></li><li><a href="global.html#numberFormat">numberFormat</a></li><li><a href="global.html#osType">osType</a></li><li><a href="global.html#params2Url">params2Url</a></li><li><a href="global.html#readProp">readProp</a></li><li><a href="global.html#replaceParamVal">replaceParamVal</a></li><li><a href="global.html#scrollToBottom">scrollToBottom</a></li><li><a href="global.html#scrollToTop">scrollToTop</a></li><li><a href="global.html#shuffleArray">shuffleArray</a></li><li><a href="global.html#smoothScroll">smoothScroll</a></li><li><a href="global.html#toCDB">toCDB</a></li><li><a href="global.html#toDBC">toDBC</a></li><li><a href="global.html#toFullScreen">toFullScreen</a></li><li><a href="global.html#transformLatx">transformLatx</a></li><li><a href="global.html#transformLon">transformLon</a></li><li><a href="global.html#validateImageSize">validateImageSize</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Dec 13 2024 17:52:54 GMT+0800 (中国标准时间)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

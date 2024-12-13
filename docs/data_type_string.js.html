@@ -1,8 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: data/type/string.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: data/type/string.js</h1>
+
+    
 
 
-import {isNil} from "lodash";
 
-/**
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * 将数字转换为百分比格式
  * @param {number} value - 要转换的数字
  * @param {number} dec - 小数位数，默认为 1
@@ -10,7 +34,7 @@ import {isNil} from "lodash";
  * @returns {string} - 格式化后的百分比字符串
  */
 export function fixPercentage (value, dec = 1, defaultValue = '--') {
-  if (_.isNil(value) || Number.isNaN(+value) || (typeof value === 'string' && value.length === 0)) {
+  if (_.isNil(value) || Number.isNaN(+value) || (typeof value === 'string' &amp;&amp; value.length === 0)) {
     return defaultValue;
   }
   const n = (+value).toFixed(dec);
@@ -28,8 +52,8 @@ export function amountFormat (value, dec) {
   const l = s.split(".")[0].split("").reverse()
   const r = '.' + s.split(".")[1];
   let t = "";
-  for (let i = 0; i < l.length; i++) {
-    t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
+  for (let i = 0; i &lt; l.length; i++) {
+    t += l[i] + ((i + 1) % 3 == 0 &amp;&amp; (i + 1) != l.length ? "," : "");
   }
 
   const reStr = dec === 0 ?
@@ -67,7 +91,7 @@ export function fomartBankCardCode (bankCardCode) {
 
   //遍历账户
   let spaceStr = "";
-  for (let i = 0, len = bankCardCode.length; i < len; i++) {
+  for (let i = 0, len = bankCardCode.length; i &lt; len; i++) {
     //每4个字符加一个空格
     if (i % 4 === 0) {
       spaceStr += " " + bankCardCode[i];
@@ -93,17 +117,17 @@ export function changeMoneyToChinese (n) {
     ['元', '万', '亿'],
     ['', '拾', '佰', '仟']
   ];
-  var head = n < 0 ? '欠' : '';
+  var head = n &lt; 0 ? '欠' : '';
   n = Math.abs(n);
   var s = '';
-  for (var i = 0; i < fraction.length; i++) {
+  for (var i = 0; i &lt; fraction.length; i++) {
     s += (digit[Math.floor(n * 10 * Math.pow(10, i)) % 10] + fraction[i]).replace(/零./, '');
   }
   s = s || '整';
   n = Math.floor(n);
-  for (var i = 0; i < unit[0].length && n > 0; i++) {
+  for (var i = 0; i &lt; unit[0].length &amp;&amp; n > 0; i++) {
     var p = '';
-    for (var j = 0; j < unit[1].length && n > 0; j++) {
+    for (var j = 0; j &lt; unit[1].length &amp;&amp; n > 0; j++) {
       p = digit[n % 10] + unit[1][j] + p;
       n = Math.floor(n / 10);
     }
@@ -126,7 +150,7 @@ export function intToChinese (value) {
     let pos = 0;
     if ($1[0] !== '0') {
       pos = len - idx;
-      if (idx == 0 && $1[0] == 1 && idxs[len - idx] == '十') {
+      if (idx == 0 &amp;&amp; $1[0] == 1 &amp;&amp; idxs[len - idx] == '十') {
         return idxs[len - idx];
       }
       return num[$1[0]] + idxs[len - idx];
@@ -162,7 +186,7 @@ export function numberFormat (value, k = 10000) {
   }
   var param = {}
   var sizes = ['元', '万元', '亿元', '万亿元']
-  if (value < k) {
+  if (value &lt; k) {
     param.value = toFixed(value)
     param.unit = '元'
   } else {
@@ -207,9 +231,9 @@ export function getCamelCase  (str)  {
  */
 export function toCDB  (str)  {
   let result = "";
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i &lt; str.length; i++) {
     code = str.charCodeAt(i);
-    if (code >= 65281 && code <= 65374) {
+    if (code >= 65281 &amp;&amp; code &lt;= 65374) {
       result += String.fromCharCode(str.charCodeAt(i) - 65248);
     } else if (code == 12288) {
       result += String.fromCharCode(str.charCodeAt(i) - 12288 + 32);
@@ -227,9 +251,9 @@ export function toCDB  (str)  {
  */
 export function toDBC (str)  {
   let result = "";
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i &lt; str.length; i++) {
     code = str.charCodeAt(i);
-    if (code >= 33 && code <= 126) {
+    if (code >= 33 &amp;&amp; code &lt;= 126) {
       result += String.fromCharCode(str.charCodeAt(i) + 65248);
     } else if (code == 32) {
       result += String.fromCharCode(str.charCodeAt(i) + 12288 - 32);
@@ -240,20 +264,28 @@ export function toDBC (str)  {
   return result;
 }
 
-/**
- * 保留小数位数
- * @param {number} value - 要格式化的数字
- * @param {number} dec - 要保留的小数位数，默认为 2
- * @param {number} divisor - 用于除 value 的除数，默认为 1
- * @param {string} defaultValue - 如果 value 为 null 或 NaN，则返回的默认值，默认为 '--'
- * @returns {string} - 格式化后的数字字符串
- */
-export function fixNumber (value, dec = 2, divisor = 1, defaultValue = '--') {
-  if (isNil(value) || Number.isNaN(+value)) {
-    return defaultValue;
-  }
-  return (+value / divisor).toFixed(dec);
-}
+
+
+</code></pre>
+        </article>
+    </section>
 
 
 
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-data.html">data</a></li><li><a href="module-data_storage.html">data/storage</a></li><li><a href="module-data_storage_WangStorage.html">data/storage/WangStorage</a></li><li><a href="module-data_storage_cookie.html">data/storage/cookie</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GetRequest">GetRequest</a></li><li><a href="global.html#amountFormat">amountFormat</a></li><li><a href="global.html#blobToDataURL">blobToDataURL</a></li><li><a href="global.html#broswer">broswer</a></li><li><a href="global.html#changeMoneyToChinese">changeMoneyToChinese</a></li><li><a href="global.html#convertLonLatToGCJ">convertLonLatToGCJ</a></li><li><a href="global.html#emptyDefault">emptyDefault</a></li><li><a href="global.html#exitFullscreen">exitFullscreen</a></li><li><a href="global.html#fistLetterUpper">fistLetterUpper</a></li><li><a href="global.html#fixNumber">fixNumber</a></li><li><a href="global.html#fixPercentage">fixPercentage</a></li><li><a href="global.html#flatArray">flatArray</a></li><li><a href="global.html#flatArrayToKey">flatArrayToKey</a></li><li><a href="global.html#flatArrayToOption">flatArrayToOption</a></li><li><a href="global.html#fomartBankCardCode">fomartBankCardCode</a></li><li><a href="global.html#funcUrlDel">funcUrlDel</a></li><li><a href="global.html#getA4PixelSize">getA4PixelSize</a></li><li><a href="global.html#getCamelCase">getCamelCase</a></li><li><a href="global.html#getClientHeight">getClientHeight</a></li><li><a href="global.html#getDPI">getDPI</a></li><li><a href="global.html#getExplorerInfo">getExplorerInfo</a></li><li><a href="global.html#getKebabCase">getKebabCase</a></li><li><a href="global.html#getPageViewWidth">getPageViewWidth</a></li><li><a href="global.html#getQueryString">getQueryString</a></li><li><a href="global.html#getType">getType</a></li><li><a href="global.html#handleScrollHeader">handleScrollHeader</a></li><li><a href="global.html#hideString">hideString</a></li><li><a href="global.html#intToChinese">intToChinese</a></li><li><a href="global.html#isAppleMobileDevice">isAppleMobileDevice</a></li><li><a href="global.html#isIE">isIE</a></li><li><a href="global.html#isMobile">isMobile</a></li><li><a href="global.html#mapToArray">mapToArray</a></li><li><a href="global.html#newWindowDownload">newWindowDownload</a></li><li><a href="global.html#numberFormat">numberFormat</a></li><li><a href="global.html#osType">osType</a></li><li><a href="global.html#params2Url">params2Url</a></li><li><a href="global.html#readProp">readProp</a></li><li><a href="global.html#replaceParamVal">replaceParamVal</a></li><li><a href="global.html#scrollToBottom">scrollToBottom</a></li><li><a href="global.html#scrollToTop">scrollToTop</a></li><li><a href="global.html#shuffleArray">shuffleArray</a></li><li><a href="global.html#smoothScroll">smoothScroll</a></li><li><a href="global.html#toCDB">toCDB</a></li><li><a href="global.html#toDBC">toDBC</a></li><li><a href="global.html#toFullScreen">toFullScreen</a></li><li><a href="global.html#transformLatx">transformLatx</a></li><li><a href="global.html#transformLon">transformLon</a></li><li><a href="global.html#validateImageSize">validateImageSize</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Dec 13 2024 17:52:54 GMT+0800 (中国标准时间)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

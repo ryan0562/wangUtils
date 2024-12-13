@@ -27,5 +27,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.21"
+  },
+  "scripts": {
+    "doc": "rimraf docs &&  jsdoc -c jsdocConfig.json"
   }
 }
