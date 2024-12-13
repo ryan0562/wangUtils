@@ -1,0 +1,10 @@
+{
+  "source": {
+    "include": ["lib"],
+    "exclude": ["node_modules"]
+  },
+  "opts": {
+    "destination": "./docs/",
+    "template": "templates/default"
+  }
+}

@@ -1,12 +1,12 @@
 {
   "name": "waker-utils",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "waker常用工具库集成",
-  "main": "index.js",
+  "main": "lib/index.js",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/vue.git"
+    "url": "git+https://github.com/ryan0562/wangUtils"
   },
   "files": [
     "lib",
@@ -22,10 +22,10 @@
     "url": "https://github.com/ryan0562/wangUtils/issues"
   },
   "homepage": "https://github.com/ryan0562/wangUtils",
-  "dependencies": {
-
-  },
   "devDependencies": {
-
+    "jsdoc": "^4.0.4"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
