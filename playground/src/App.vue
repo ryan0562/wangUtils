@@ -6,7 +6,7 @@
 
 <script>
 import wakerUtils, {_data, WangStorage} from "waker-utils";
-
+window.wakerUtils = wakerUtils;
 
 export default {
   name: 'App',
@@ -16,8 +16,6 @@ export default {
     }
   },
   created () {
-    debugger;
-    this.data = _data._type.getType({});
   }
 }
 </script>
