@@ -1,22 +1,9 @@
+# 发布
+`npm publish`
 
-# WangStorage
+# 生成使用文档
+`npm run doc`
 
-``` js     
-// 创建 LocalStorageProxy 实例
-const ls = new wangStorageProxy(localStorage,{
-    prefix: 'wang',
-});
-
-/* 监听用法 */
-
-// 只有当前标签页能触发
-window.addEventListener('wangStorageChange', function(event) {
-console.log('wangStorageChange');
-});
-
-// 只有其他标签页能触发
-window.addEventListener('storage', function(event) {
-console.log('storage');
-});
-
-```
+# 开发
+1. 根目录`npm link`
+2. playground目录`npm link waker-utils` && `npm run dev`
