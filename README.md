@@ -1,3 +1,7 @@
+# 使用
+`npm install waker-utils`
+
+
 # 发布
 `npm publish`
 
@@ -9,4 +13,4 @@
 2. playground目录`npm link waker-utils` && `npm run dev`
 
 
-> 
+
