@@ -8,18 +8,19 @@
     ]
   },
   "opts": {
-    "template": "node_modules/tui-jsdoc-template",
-    "recurse": true,
-    "destination": "./docs/"
+    "template": "node_modules/tui-jsdoc-template", // 模板
+    "recurse": true, // 是否递归
+    "destination": "./docs/" // 生成文档路径
   },
+  "plugins": ["plugins/markdown"],// 支持markdown语法
   "templates": {
-    "name": "waker-utils",
-    "footerText": "waker",
-    "useCollapsibles":true,
+    "name": "waker-utils", // 项目名称
+    "footerText": "waker", // 项目底部信息
+    "useCollapsibles":true, // 折叠
     "default": {
-      "includeDate": true,
-      "staticFiles": {
-        "include": ["./jsdoc/static/"]
+      "includeDate": true, // 是否显示日期
+      "staticFiles": { // 静态资源
+        "include": ["./jsdoc/static/"] // 静态资源路径
       }
     },
     "css": [
