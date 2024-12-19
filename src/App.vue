@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import wakerUtils, {_data, WangStorage} from "waker-utils";
+import wakerUtils, {_data, WangStorage} from "@lib/index.js";
 window.wakerUtils = wakerUtils;
 
 export default {

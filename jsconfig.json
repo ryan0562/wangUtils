@@ -4,5 +4,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "exclude": ["node_modules", "dist"]
+  "exclude": [
+    "playground/node_modules", "dist"]
 }

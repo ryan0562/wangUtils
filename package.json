@@ -28,14 +28,20 @@
     "jsdoc": "^4.0.4",
     "tui-jsdoc-template": "^1.2.2",
     "taffydb": "^2.7.3",
-    "vite": "^6.0.3"
+    "vite": "^6.0.3",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite-plugin-vue-devtools": "^7.6.5"
   },
   "dependencies": {
+    "pinia": "^2.2.6",
+    "vue": "^3.5.13",
+    "vue-router": "^4.4.5",
     "lodash": "^4.17.21"
   },
   "scripts": {
-    "release": "npm run build && npm run doc && npm publish",
+    "dev": "vite",
     "build": "vite build",
+    "release": "npm run build && npm run doc && npm publish",
     "doc": "rimraf docs &&  jsdoc -c jsdoc/config.jsonc"
   }
 }
