@@ -1,8 +1,9 @@
 {
   "name": "waker-utils",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "waker常用工具库集成",
   "main": "lib/index.js",
+  "module": "dist/waker-utils.umd.js",
   "type": "module",
   "repository": {
     "type": "git",
@@ -10,11 +11,12 @@
   },
   "files": [
     "lib",
-    "index.js",
-    "README.md"
+    "docs",
+    "README.md",
+    "dist"
   ],
   "keywords": [
-    "wangUtils"
+    "waker-utils"
   ],
   "author": "waker",
   "license": "MIT",
@@ -23,12 +25,17 @@
   },
   "homepage": "https://github.com/ryan0562/wangUtils",
   "devDependencies": {
-    "jsdoc": "^4.0.4"
+    "jsdoc": "^4.0.4",
+    "tui-jsdoc-template": "^1.2.2",
+    "taffydb": "^2.7.3",
+    "vite": "^6.0.3"
   },
   "dependencies": {
     "lodash": "^4.17.21"
   },
   "scripts": {
-    "doc": "rimraf docs &&  jsdoc -c jsdocConfig.json"
+    "release": "npm run build && npm run doc && npm publish",
+    "build": "vite build",
+    "doc": "rimraf docs &&  jsdoc -c jsdoc/config.jsonc"
   }
 }

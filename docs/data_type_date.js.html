@@ -1,8 +1,10 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Module: device/browser | waker-utils</title>
+    <title>Source: data/type/date.js | waker-utils</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -45,133 +47,64 @@
 
 
 
-
-<section>
-
-<header>
     
-        <h2>device/browser</h2>
-        
-            
-        
-    
-</header>
-
-<article>
-    
-        <div class="container-overview">
-        
-            
-                <div class="description">浏览器操作</div>
-            
-
-            
-                
-
-<dt>
-    
-</dt>
-<dd>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * 函数接收一个日期作为参数，并返回一个字符串
+ * @param {Date|String} date 需要计算时间间隔的日期
+ * @param {String|number} diff 差值小于多少显示为'刚刚'，单位：秒
+ * @return String
+ */
+export function timeIntervalFormat (date, {diff = 0}={}) {
+  // 检查`diff`是否为数字
+  if (isNaN(diff)) {
+    console.error('传入的`刚刚`差值不正确', date);
+    return ''
+  }
+  // 定义时间单位和对应的毫秒数（使用近似值）
+  const timeUnits = [
+    {label: '年', milliseconds: 365 * 24 * 60 * 60 * 1e3}, // 平均每年
+    {label: '个月', milliseconds: 30 * 24 * 60 * 60 * 1e3}, // 平均每月
+    {label: '天', milliseconds: 24 * 60 * 60 * 1e3}, // 每天
+    {label: '小时', milliseconds: 60 * 60 * 1e3}, // 每小时
+    {label: '分钟', milliseconds: 60 * 1e3}, // 每分钟
+    {label: '秒', milliseconds: 1e3}, // 每秒
+  ];
 
 
-<dl class="details">
+  // 将传入的日期转换为Date对象，并计算与当前时间的差值（以毫秒为单位）
+  const dateObj = new Date(date);
+  // 如果解析失败，返回空字符串
+  if (isNaN(dateObj.getTime())) {
+    console.error('传入的日期无效', date);
+    return ''
+  }
 
-    
+  const now = Date.now();
+  const isFuture = dateObj > now;
+  let diffMilliseconds = Math.abs(now - dateObj);
 
-    
+  // 时间差小于diff时，返回'刚刚'
+  if (diffMilliseconds &lt;= diff * 1e3) {
+    return '刚刚';
+  }
 
-    
+  // 遍历时间单位，找到第一个满足条件的时间单位并格式化输出
+  for (const unit of timeUnits) {
+    if (diffMilliseconds >= unit.milliseconds) {
+      const value = Math.floor(diffMilliseconds / unit.milliseconds);
+      if (!isNaN(value)) {
+        return isFuture ? `未来${value}${unit.label}` : `${value}${unit.label}前`;
+      }
+    }
+  }
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="module-device_browser_window.html">module:device/browser/window</a></li>
-        
-            <li><a href="module-device_browser_url.html">module:device/browser/url</a></li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-    
-
-</dd>
-
-            
-        
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+  return '';
+}
+</code></pre>
+        </article>
+    </section>
 
 
 
@@ -188,7 +121,7 @@
 <script src="scripts/linenumber.js"></script>
 
     <script>
-        var id = 'module:device/browser_sub'.replace(/"/g, '_');
+        var id = '_sub'.replace(/"/g, '_');
         var selectedApi = document.getElementById(id); // do not use jquery selector
         var $selectedApi = $(selectedApi);
 

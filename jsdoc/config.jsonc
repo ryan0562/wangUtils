@@ -1,0 +1,29 @@
+{
+  "source": {
+    "include": [
+      "lib"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+  },
+  "opts": {
+    "template": "node_modules/tui-jsdoc-template",
+    "recurse": true,
+    "destination": "./docs/"
+  },
+  "templates": {
+    "name": "waker-utils",
+    "footerText": "waker",
+    "useCollapsibles":true,
+    "default": {
+      "includeDate": true,
+      "staticFiles": {
+        "include": ["./jsdoc/static/"]
+      }
+    },
+    "css": [
+      "custom.css"
+    ]
+  }
+}
