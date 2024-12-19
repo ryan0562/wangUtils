@@ -1,6 +1,6 @@
 {
   "name": "waker-utils",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "waker常用工具库集成",
   "main": "lib/index.js",
   "module": "lib/index.js",

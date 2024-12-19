@@ -2,6 +2,11 @@ body{
     font-size: 16px;
 }
 
-.main section article dl h4 {
+.main section article dl dt .name {
     font-size: 20px;
+}
+
+.main section article dl dd {
+    margin-bottom: 30px;
+    border-bottom: 1px dashed #ccc;
 }
