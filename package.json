@@ -2,8 +2,8 @@
   "name": "waker-utils",
   "version": "0.0.7",
   "description": "waker常用工具库集成",
-  "main": "lib/index.js",
-  "module": "lib/index.js",
+  "main": "dist/waker-utils.umd.js",
+  "module": "dist/waker-utils.es.js",
   "type": "module",
   "repository": {
     "type": "git",
