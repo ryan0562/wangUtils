@@ -1,6 +1,6 @@
 {
   "name": "waker-utils",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "waker常用工具库集成",
   "main": "dist/waker-utils.umd.js",
   "module": "dist/waker-utils.es.js",
