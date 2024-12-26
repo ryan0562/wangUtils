@@ -1,8 +1,10 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Module: data | waker-utils</title>
+    <title>Source: request/superAwait.js | waker-utils</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -45,299 +47,35 @@
 
 
 
-
-<section>
-
-<header>
     
-        <h2>data</h2>
-        
-            
-        
-    
-</header>
-
-<article>
-    
-        <div class="container-overview">
-        
-            
-                <div class="description"><p>数据</p></div>
-            
-
-            
-                
-
-<dt>
-    
-</dt>
-<dd>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="module-data_storage.html">module:data/storage</a></li>
-        
-            <li><a href="module-data_type.html">module:data/type</a></li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-    
-
-</dd>
-
-            
-        
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        <dl>
-                
-
-<dt>
-    
-        <h4 class="name" id=".isEmpty">
-            
-                <span class="type-signature"><span class="icon green">static</span> </span>isEmpty<span class="signature">(value)</span><span class="type-signature"> &rarr; {Boolean}</span>
-                
-            
-            <div class="container-source members">
-                <code><a href="data_index.js.html">data/index.js</a></code>,
-                <code><a href="data_index.js.html#line17">line 17</a></code>
-            </div>
-            
-        </h4>
-
-        
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>判断是否为逻辑意义上的空值。包含：null、undefined、空对象、空数组、空字符串、空映射、空集合</p>
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="container-params">
-        <h5>Parameters:</h5>
-        
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>需要判断的值</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="container-returns">
-        <h5>Returns:</h5>
-        
-                
-
-
-
-<span class="param-type">Boolean</span>
-
-
-
-
-
-- <ul>
-<li>是否为空值</li>
-</ul>
-
-
-
-
-            
-    </div>
-    
-
-    
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-</dd>
-
-            </dl>
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * superAwait，返回一个数组，第一个元素是错误对象（如果有的话），第二个元素是 Promise 的结果。
+ * @param {Promise} promise - 需要处理的 Promise 对象。
+ * @param {Object} [errorExt] - 可选的错误扩展对象，如果 Promise 被拒绝，此对象的属性将被合并到错误对象中。
+ * @returns {Promise&lt;Array>} - 返回一个 Promise，其结果是一个数组，第一个元素是错误对象（如果没有错误则为 null），第二个元素是 Promise 的结果（如果没有结果则为 undefined）。
+ *
+ * @example
+ * const [err, res = {}] = await this.superAwait(configTemplateSave(postData));
+ * if (err || res.code !== 200) {
+ *  //await错误处理
+ *  this.$message.error(res.message || err.message);
+ *  return;
+ * }
+ * //await成功处理...
+ */
+export function superAwait (promise, errorExt) {
+  return promise.then(function (data) { return [null, data]; }).catch(function (err) {
+    if (errorExt) {
+      Object.assign(err, errorExt);
+    }
+    return [err, undefined];
+  });
+}
+</code></pre>
+        </article>
+    </section>
 
 
 
@@ -354,7 +92,7 @@
 <script src="scripts/linenumber.js"></script>
 
     <script>
-        var id = 'module:data_sub'.replace(/"/g, '_');
+        var id = '_sub'.replace(/"/g, '_');
         var selectedApi = document.getElementById(id); // do not use jquery selector
         var $selectedApi = $(selectedApi);
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Module: data | waker-utils</title>
+    <title>Module: data/type/date | waker-utils</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -50,7 +50,7 @@
 
 <header>
     
-        <h2>data</h2>
+        <h2>data/type/date</h2>
         
             
         
@@ -62,7 +62,7 @@
         <div class="container-overview">
         
             
-                <div class="description"><p>数据</p></div>
+                <div class="description"><p>时间、日期 类型操作</p></div>
             
 
             
@@ -127,15 +127,6 @@
     
 
     
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="module-data_storage.html">module:data/storage</a></li>
-        
-            <li><a href="module-data_type.html">module:data/type</a></li>
-        </ul>
-    </dd>
-    
 
     
 </dl>
@@ -172,14 +163,14 @@
 
 <dt>
     
-        <h4 class="name" id=".isEmpty">
+        <h4 class="name" id=".timeIntervalFormat">
             
-                <span class="type-signature"><span class="icon green">static</span> </span>isEmpty<span class="signature">(value)</span><span class="type-signature"> &rarr; {Boolean}</span>
+                <span class="type-signature"><span class="icon green">static</span> </span>timeIntervalFormat<span class="signature">(date, diff)</span><span class="type-signature"></span>
                 
             
             <div class="container-source members">
-                <code><a href="data_index.js.html">data/index.js</a></code>,
-                <code><a href="data_index.js.html#line17">line 17</a></code>
+                <code><a href="data_type_date.js.html">data/type/date.js</a></code>,
+                <code><a href="data_type_date.js.html#line13">line 13</a></code>
             </div>
             
         </h4>
@@ -191,7 +182,7 @@
 
     
     <div class="description">
-        <p>判断是否为逻辑意义上的空值。包含：null、undefined、空对象、空数组、空字符串、空映射、空集合</p>
+        <p>函数接收一个日期作为参数，并返回一个字符串</p>
     </div>
     
 
@@ -227,13 +218,16 @@
 
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>date</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">Date</span>
+|
+
+<span class="param-type">String</span>
 
 
             
@@ -243,7 +237,33 @@
 
             
 
-            <td class="description last"><p>需要判断的值</p></td>
+            <td class="description last"><p>需要计算时间间隔的日期</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>diff</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>差值小于多少显示为'刚刚'，单位：秒</p></td>
         </tr>
 
     
@@ -271,15 +291,8 @@
 
 
 
-<span class="param-type">Boolean</span>
 
-
-
-
-
-- <ul>
-<li>是否为空值</li>
-</ul>
+- <p>String</p>
 
 
 
@@ -354,7 +367,7 @@
 <script src="scripts/linenumber.js"></script>
 
     <script>
-        var id = 'module:data_sub'.replace(/"/g, '_');
+        var id = 'module:data/type/date_sub'.replace(/"/g, '_');
         var selectedApi = document.getElementById(id); // do not use jquery selector
         var $selectedApi = $(selectedApi);
 
