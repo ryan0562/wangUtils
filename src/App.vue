@@ -26,7 +26,7 @@ export default {
         },
         // resolve业务条件
         resolveConditions (data) {
-          return data.code < 200
+          return data.code === 200 //默认值
         },
         // reject前置钩子
         beforeRejectHooks: ({data, error}) => {
@@ -40,7 +40,7 @@ export default {
     }).then(res => {
       this.$message.success(res.message);
     }).catch(({data, error}) => {
-      console.error(error)
+      if(error) throw error
     })
 
   }
