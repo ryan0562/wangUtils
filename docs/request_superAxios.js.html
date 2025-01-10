@@ -1,8 +1,10 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Module: position/lonLat | waker-utils</title>
+    <title>Source: request/superAxios.js | waker-utils</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -45,677 +47,134 @@
 
 
 
-
-<section>
-
-<header>
-    
-        <h2>position/lonLat</h2>
-        
-            
-        
-    
-</header>
-
-<article>
-    
-        <div class="container-overview">
-        
-            
-                <div class="description"><p>坐标 等操作</p></div>
-            
-
-            
-                
-
-<dt>
-    
-</dt>
-<dd>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-</dd>
-
-            
-        
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        <dl>
-                
-
-<dt>
-    
-        <h4 class="name" id=".convertLonLatToGCJ">
-            
-                <span class="type-signature"><span class="icon green">static</span> </span>convertLonLatToGCJ<span class="signature">(wgLon, wgLat)</span><span class="type-signature"> &rarr; {Array}</span>
-                
-            
-            <div class="container-source members">
-                <code><a href="position_lonLat.js.html">position/lonLat.js</a></code>,
-                <code><a href="position_lonLat.js.html#line12">line 12</a></code>
-            </div>
-            
-        </h4>
-
-        
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>wgs84坐标转火星坐标(偏差坐标）</p>
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="container-params">
-        <h5>Parameters:</h5>
-        
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>wgLon</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">float</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>wgs经度</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>wgLat</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">float</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>wgs纬度</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="container-returns">
-        <h5>Returns:</h5>
-        
-                
-
-
-
-<span class="param-type">Array</span>
-
-
-
-
-
-- <p>加了偏差后的坐标</p>
-
-
-
-
-            
-    </div>
-    
-
-    
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-</dd>
-
-            
-                
-
-<dt>
-    
-        <h4 class="name" id=".transformLatx">
-            
-                <span class="type-signature"><span class="icon green">static</span> </span>transformLatx<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {Number}</span>
-                
-            
-            <div class="container-source members">
-                <code><a href="position_lonLat.js.html">position/lonLat.js</a></code>,
-                <code><a href="position_lonLat.js.html#line40">line 40</a></code>
-            </div>
-            
-        </h4>
-
-        
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>墨卡托坐标转纬度函数</p>
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="container-params">
-        <h5>Parameters:</h5>
-        
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>x</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>横坐标</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>y</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>纵坐标</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="container-returns">
-        <h5>Returns:</h5>
-        
-                
-
-
-
-<span class="param-type">Number</span>
-
-
-
-
-
-- <p>纬度</p>
-
-
-
-
-            
-    </div>
-    
-
-    
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-</dd>
-
-            
-                
-
-<dt>
-    
-        <h4 class="name" id=".transformLon">
-            
-                <span class="type-signature"><span class="icon green">static</span> </span>transformLon<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {Number}</span>
-                
-            
-            <div class="container-source members">
-                <code><a href="position_lonLat.js.html">position/lonLat.js</a></code>,
-                <code><a href="position_lonLat.js.html#line54">line 54</a></code>
-            </div>
-            
-        </h4>
-
-        
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>墨卡托坐标转经度函数</p>
-    </div>
-    
-
     
-
-    
-
-    
-
-    
-    <div class="container-params">
-        <h5>Parameters:</h5>
-        
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>x</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>横坐标</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>y</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>纵坐标</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="container-returns">
-        <h5>Returns:</h5>
-        
-                
-
-
-
-<span class="param-type">Number</span>
-
-
-
-
-
-- <p>经度</p>
-
-
-
-
-            
-    </div>
-    
-
-    
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-</dd>
-
-            </dl>
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import axios from 'axios';
+import {deepAssign} from "@lib/data/type/object.js";
+
+
+/**
+ * 扩展的 Axios 类，包含默认配置和拦截器
+ * @class superAxiosClass
+ * @param {Object} config - 扩展配置对象，axiosConfig的超集
+ * @param {Function} config.resolveConditions - 业务判断函数：接口请求成功后，业务判断条件函数；默认值：（）=> code===200
+ * @param {Function} config.beforeRejectHooks - 错误处理前置钩子：接口请求失败 或 业务判断条件为false时，都会在promise.reject前触发
+ *
+ * @example
+ * const Axios = new superAxios(
+ *       {
+ *         ...Axios.config,
+ *         // resolve业务条件：一般用来处理业务条件
+ *         resolveConditions (data) {
+ *           return data.code === 200 //默认值
+ *         },
+ *         // reject前置钩子：一般用来做通用的报错处理
+ *         beforeRejectHooks: ({data, error}) => {
+ *           if (data) this.$message.error(data.message)
+ *         }
+ *       }
+ *     );
+ *     Axios.get('xxx',{
+ *       beforeRejectHooks:null, //实例配置会覆盖默认
+ *       resolveConditions:null, //实例配置会覆盖默认
+ *     }).then(res => {
+ *       // resolveConditions存在需要通过resolveConditions判断
+ *       // resolveConditions不存在则走默认code===200判断
+ *       // 剩余会走到catch里，所以这里不用写if(data.code===200) xxx等通用逻辑，这些逻辑可以放在beforeRejectHooks钩子里
+ *       this.$message.success(res.message);
+ *     }).catch(({data, error}) => {
+ *       // 如果接口请求成功，但是业务逻辑判断不通过，则存在data
+ *       // error存在则表示接口请求失败
+ *       console.error(error)
+ *     })
+ */
+class superAxiosClass {
+  /**
+   * 构造函数
+   * @constructor
+   * @param {Object} config - 自定义配置对象
+   */
+  constructor (config = {}) {
+    const defaultConfig = {
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        Accept: 'application/json',
+      },
+    };
+
+    // 深度覆盖配置
+    this.effectConfig = deepAssign({}, defaultConfig, config);
+
+    this.init = axios.create(this.effectConfig);
+
+    // 添加请求拦截器
+    this.init.interceptors.request.use(
+      (config) => {
+        // 在发送请求之前做些什么 添加 token 等鉴权功能
+        return config;
+      },
+      (error) => {
+        // 对请求错误做些什么
+        return Promise.reject(error);
+      }
+    );
+
+    // 添加响应拦截器
+    this.init.interceptors.response.use(
+      (res) => {
+        const {status, data, config} = res;
+
+        // 判断函数
+        const resolveConditions = config.resolveConditions || this.defaultBusinessSuccessJudgment;
+        if (resolveConditions(data)) {
+          return data;
+        }
+
+        return this.rejectEvent({res});
+      },
+      (error) => {
+        // 对响应错误做点什么
+        return this.rejectEvent({error});
+      }
+    );
+
+    return this.init;
+  }
+
+  /**
+   * 默认错误处理事件
+   * @param {Object} data - 响应数据
+   * @param {Error} error - 错误对象
+   * @returns {Promise} - 返回一个被拒绝的 Promise
+   */
+  rejectEvent ({data = {}, error = {}}) {
+    const config = data.config || error.config;
+
+    // Reject前置钩子存在则触发
+    if (config.beforeRejectHooks) {
+      config.beforeRejectHooks({data: data.data, error});
+    }
+
+    return Promise.reject({data, error});
+  }
+
+
+  /**
+   * 默认业务成功判断函数
+   * @param {Object} data - 响应数据
+   * @returns {boolean} - 如果业务成功返回 true，否则返回 false
+   */
+  defaultBusinessSuccessJudgment (data) {
+    return data.code === 200;
+  }
+
+}
+
+export default superAxiosClass;
+</code></pre>
+        </article>
+    </section>
 
 
 
@@ -732,7 +191,7 @@
 <script src="scripts/linenumber.js"></script>
 
     <script>
-        var id = 'module:position/lonLat_sub'.replace(/"/g, '_');
+        var id = '_sub'.replace(/"/g, '_');
         var selectedApi = document.getElementById(id); // do not use jquery selector
         var $selectedApi = $(selectedApi);
 
