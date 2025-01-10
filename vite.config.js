@@ -6,6 +6,14 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import packageJson from './package.json'
 
 export default defineConfig({
+  server:{
+    proxy:{
+      '^/mti-': {
+        target: 'http://10.168.4.205/',
+        changeOrigin: true
+      },
+    }
+  },
   plugins: [
     vue(),
     vueDevTools(),
